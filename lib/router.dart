@@ -1,7 +1,14 @@
 import 'package:baseapp/screens/home_screen.dart';
+import 'package:baseapp/screens/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
   initialLocation: '/',
-  routes: [GoRoute(path: '/', builder: (context, state) => const HomeScreen())],
+  routes: [
+    GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+    GoRoute(
+      path: '/settings',
+      builder: (context, state) => const SettingsScreen(),
+    ),
+  ],
 );
