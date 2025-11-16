@@ -18,6 +18,8 @@ dependencies:
   google_fonts: ^6.1.0 
   permission_handler: ^11.3.0 
   intl: ^0.19.0 
+  package_info_plus: ^8.3.0
+  http: ^1.4.0
   
 # flutter_native_splash 패키지를 사용하여 스플래시 화면을 구성합니다.
 # color는 스플래시 화면의 배경색을 지정하며 흰색("#FFFFFF")으로 설정되어 있습니다.
@@ -66,4 +68,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
+    - .env
   

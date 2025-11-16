@@ -1,11 +1,13 @@
 import 'package:baseapp/router.dart';
 import 'package:baseapp/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load(fileName: ".env");
   // 스플래시 화면 유지
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
