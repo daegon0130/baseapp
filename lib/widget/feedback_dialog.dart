@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:baseapp/l10n/app_localizations.dart';
 
 class FeedbackDialog extends StatefulWidget {
   const FeedbackDialog({super.key});
@@ -16,52 +17,52 @@ class FeedbackDialog extends StatefulWidget {
 
 class _FeedbackDialogState extends State<FeedbackDialog> {
   int _currentStep = 0;
-  String _category = '기능 제안';
+  String _category = '';
   String? _messageError;
   String? _emailError;
   final _messageController = TextEditingController();
   final _emailController = TextEditingController();
 
   // 타이틀 가져오기
-  String _getTitle() {
+  String _getTitle(AppLocalizations l10n) {
     switch (_currentStep) {
       case 0:
-        return '문의 유형';
+        return l10n.inquiryType;
       case 1:
-        return '내용 입력';
+        return l10n.contentInput;
       case 2:
-        return '이메일 주소 (선택 사항)';
+        return l10n.emailOptional;
       default:
         return '';
     }
   }
 
   // // 컨텐츠 가져오기
-  Widget _buildContent() {
+  Widget _buildContent(AppLocalizations l10n) {
     switch (_currentStep) {
       case 0:
-        return _buildCategoryStepContent();
+        return _buildCategoryStepContent(l10n);
       case 1:
-        return _buildMessageStepContent();
+        return _buildMessageStepContent(l10n);
       case 2:
-        return _buildEmailStepContent();
+        return _buildEmailStepContent(l10n);
       default:
         return SizedBox();
     }
   }
 
-  Widget _buildCategoryStepContent() {
+  Widget _buildCategoryStepContent(AppLocalizations l10n) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         ListTile(
           contentPadding: EdgeInsets.zero,
           leading: Icon(Icons.lightbulb_outline),
-          title: Text('기능 제안'),
-          subtitle: Text('원하는 기능을 말씀해주세요'),
+          title: Text(l10n.featureSuggestion),
+          subtitle: Text(l10n.featureSuggestionDesc),
           onTap: () {
             setState(() {
-              _category = '기능 제안';
+              _category = l10n.featureSuggestion;
               _currentStep++;
             });
           },
@@ -69,11 +70,11 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
         ListTile(
           contentPadding: EdgeInsets.zero,
           leading: Icon(Icons.bug_report_outlined),
-          title: Text('버그 신고'),
-          subtitle: Text('불편한 점을 말씀해주세요'),
+          title: Text(l10n.bugReport),
+          subtitle: Text(l10n.bugReportDesc),
           onTap: () {
             setState(() {
-              _category = '버그 신고';
+              _category = l10n.bugReport;
               _currentStep++;
             });
           },
@@ -81,11 +82,11 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
         ListTile(
           contentPadding: EdgeInsets.zero,
           leading: Icon(Icons.question_mark_outlined),
-          title: Text('기타 문의'),
-          subtitle: Text('궁금한 점을 말씀해주세요'),
+          title: Text(l10n.otherInquiry),
+          subtitle: Text(l10n.otherInquiryDesc),
           onTap: () {
             setState(() {
-              _category = '기타 문의';
+              _category = l10n.otherInquiry;
               _currentStep++;
             });
           },
@@ -94,7 +95,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
     );
   }
 
-  Widget _buildMessageStepContent() {
+  Widget _buildMessageStepContent(AppLocalizations l10n) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -105,8 +106,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
           maxLines: 4,
           keyboardType: TextInputType.multiline,
           decoration: InputDecoration(
-            hintText:
-                '예시) 앱을 실행하면 화면이 깜빡이고 검은 화면이 나타납니다. 앱을 재시작해도 동일한 문제가 발생합니다.',
+            hintText: l10n.messageHint,
             hintStyle: TextStyle(color: Colors.grey),
             errorText: _messageError,
           ),
@@ -115,7 +115,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
     );
   }
 
-  Widget _buildEmailStepContent() {
+  Widget _buildEmailStepContent(AppLocalizations l10n) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -125,54 +125,54 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
           maxLength: 100,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            hintText: 'example@email.com',
+            hintText: l10n.emailHint,
             hintStyle: TextStyle(color: Colors.grey),
             errorText: _emailError,
           ),
         ),
         SizedBox(height: 16),
-        Text(
-          '답변을 받으시려면 이메일 주소를 입력해주세요. 이메일 주소는 답변 용도 외에 사용되지 않습니다',
-          style: TextStyle(color: Colors.grey),
-        ),
+        Text(l10n.emailNote, style: TextStyle(color: Colors.grey)),
       ],
     );
   }
 
   // // 액션 가져오기
-  List<Widget> _buildActions() {
+  List<Widget> _buildActions(AppLocalizations l10n) {
     switch (_currentStep) {
       case 0:
-        return _buildCategoryStepActions();
+        return _buildCategoryStepActions(l10n);
       case 1:
-        return _buildMessageStepActions();
+        return _buildMessageStepActions(l10n);
       case 2:
-        return _buildEmailStepActions();
+        return _buildEmailStepActions(l10n);
       default:
         return [];
     }
   }
 
-  List<Widget> _buildCategoryStepActions() {
+  List<Widget> _buildCategoryStepActions(AppLocalizations l10n) {
     return [
-      TextButton(onPressed: () => Navigator.pop(context), child: Text('닫기')),
+      TextButton(
+        onPressed: () => Navigator.pop(context),
+        child: Text(l10n.close),
+      ),
     ];
   }
 
-  List<Widget> _buildMessageStepActions() {
+  List<Widget> _buildMessageStepActions(AppLocalizations l10n) {
     return [
       TextButton(
         onPressed: () => setState(() {
           _currentStep--;
         }),
-        child: Text('이전'),
+        child: Text(l10n.previous),
       ),
       TextButton(
         onPressed: () {
           final message = _messageController.text.trim();
           if (message.length < 5) {
             setState(() {
-              _messageError = '5자 이상 입력해주세요';
+              _messageError = l10n.messageMinLength;
             });
             return;
           }
@@ -181,25 +181,25 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
             _currentStep++;
           });
         },
-        child: Text('다음'),
+        child: Text(l10n.next),
       ),
     ];
   }
 
-  List<Widget> _buildEmailStepActions() {
+  List<Widget> _buildEmailStepActions(AppLocalizations l10n) {
     return [
       TextButton(
         onPressed: () => setState(() {
           _currentStep--;
         }),
-        child: Text('이전'),
+        child: Text(l10n.previous),
       ),
       TextButton(
         onPressed: () {
           final email = _emailController.text.trim();
           if (email.isNotEmpty && !email.contains('@')) {
             setState(() {
-              _emailError = '올바른 이메일 주소를 입력해주세요';
+              _emailError = l10n.invalidEmail;
             });
             return;
           }
@@ -209,19 +209,21 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
             'email': _emailController.text.trim(),
           });
         },
-        child: Text('제출'),
+        child: Text(l10n.submit),
       ),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return AlertDialog(
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      title: Text(_getTitle()),
-      content: _buildContent(),
-      actions: _buildActions(),
+      title: Text(_getTitle(l10n)),
+      content: _buildContent(l10n),
+      actions: _buildActions(l10n),
     );
   }
 }
