@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:baseapp/l10n/app_localizations.dart';
+import 'l10n/app_localizations.dart';
+import 'package:flutter/services.dart';
+import 'package:baseapp/admob.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +15,29 @@ void main() async {
   // 스플래시 화면 유지
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // 앱 실행
+  // 화면 세로 고정
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).catchError((error) {
+    // iPad 멀티윈도우 모드에서는 방향 변경이 불가능하므로 에러 무시
+  });
+
+  // Edge-to-edge 지원을 위한 시스템 UI 설정
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
+
+  // 광고 초기화
+  final AdmobHandler admobHandler = AdmobHandler();
+  await admobHandler.initialize();
+  //admobHandler.preloadInterstitialAd();
+
   runApp(const MyApp());
 
   // 스플래시 화면 제거
@@ -48,6 +72,7 @@ class MyApp extends StatelessWidget {
         Locale('es'), // Spanish
         Locale('ko'), // Korean
         Locale('ja'), // Japanese
+        Locale('zh'), // Chinese (Simplified)
       ],
     );
   }
