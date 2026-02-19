@@ -23,6 +23,8 @@ dependencies:
   package_info_plus: ^8.3.0
   http: ^1.4.0
   google_mobile_ads: ^6.0.0
+  shared_preferences: ^2.2.2
+  supabase_flutter: ^2.12.0
 
 
 # flutter_native_splash 패키지를 사용하여 스플래시 화면을 구성합니다.
@@ -74,4 +76,27 @@ flutter:
   assets:
     - assets/icons/
     - .env
+  
+  # Pretendard 글꼴 설정
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Pretendard-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Pretendard-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Pretendard-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Pretendard-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Pretendard-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Pretendard-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Pretendard-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Pretendard-Black.ttf
+          weight: 900
   

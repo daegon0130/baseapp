@@ -29,6 +29,17 @@
   "emailNote": "返信を受け取るにはメールアドレスを入力してください。メールアドレスは返信用途以外には使用されません",
   "notProvided": "提供なし",
   "feedbackSuccessTitle": "お問い合わせが正常に送信されました！",
-  "feedbackSuccessMessage": "お寄せいただいたご意見のおかげでアプリがより良くなります。本当にありがとうございます！\n\nもしアプリが気に入っていただけたら、ストアにレビューを残してください！アプリ制作の大きな励みになります 😊"
+  "feedbackSuccessMessage": "お寄せいただいたご意見のおかげでアプリがより良くなります。本当にありがとうございます！\n\nもしアプリが気に入っていただけたら、ストアにレビューを残してください！アプリ制作の大きな励みになります 😊",
+  "themeMode": "テーマモード",
+  "themeModeLight": "ライト",
+  "themeModeDark": "ダーク",
+  "themeModeSystem": "システムデフォルト",
+  "language": "言語",
+  "languageSystem": "システムデフォルト",
+  "languageEnglish": "English",
+  "languageSpanish": "Español",
+  "languageKorean": "한국어",
+  "languageJapanese": "日本語",
+  "languageChinese": "简体中文"
 }
 

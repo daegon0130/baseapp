@@ -100,4 +100,37 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get feedbackSuccessMessage =>
       '보내주신 의견 덕분에 앱이 더 좋아질 거예요. 정말 감사합니다!\n\n혹시 앱이 마음에 드신다면, 스토어에 리뷰 한 줄도 남겨주세요! 앱 제작에 정말 큰 힘이 됩니다 😊';
+
+  @override
+  String get themeMode => '테마 모드';
+
+  @override
+  String get themeModeLight => '라이트';
+
+  @override
+  String get themeModeDark => '다크';
+
+  @override
+  String get themeModeSystem => '시스템 기본값';
+
+  @override
+  String get language => '언어';
+
+  @override
+  String get languageSystem => '시스템 기본값';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageSpanish => 'Español';
+
+  @override
+  String get languageKorean => '한국어';
+
+  @override
+  String get languageJapanese => '日本語';
+
+  @override
+  String get languageChinese => '简体中文';
 }

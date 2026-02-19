@@ -29,6 +29,17 @@
   "emailNote": "Enter your email address to receive a response. Your email will only be used for replies",
   "notProvided": "Not provided",
   "feedbackSuccessTitle": "Your inquiry has been successfully sent!",
-  "feedbackSuccessMessage": "Your feedback helps make the app better. Thank you so much!\n\nIf you like the app, please leave a review on the store! It really helps us a lot 😊"
+  "feedbackSuccessMessage": "Your feedback helps make the app better. Thank you so much!\n\nIf you like the app, please leave a review on the store! It really helps us a lot 😊",
+  "themeMode": "Theme Mode",
+  "themeModeLight": "Light",
+  "themeModeDark": "Dark",
+  "themeModeSystem": "System Default",
+  "language": "Language",
+  "languageSystem": "System Default",
+  "languageEnglish": "English",
+  "languageSpanish": "Español",
+  "languageKorean": "한국어",
+  "languageJapanese": "日本語",
+  "languageChinese": "简体中文"
 }
 

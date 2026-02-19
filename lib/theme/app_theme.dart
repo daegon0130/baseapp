@@ -1,7 +1,6 @@
 import 'package:baseapp/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// 많이 사용하는 테마 옵션만 포함한 예제 테마 클래스입니다.
 /// 실제 프로젝트에서는 이를 기반으로 필요한 옵션을 추가하여 사용하세요.
@@ -31,12 +30,22 @@ class AppTheme {
 
       // 2. TextTheme 설정
       // 앱 전체의 텍스트 스타일 정의
-      textTheme: GoogleFonts.notoSansTextTheme(
-        const TextTheme(
-          // 가장 자주 사용되는 스타일만 정의
-          titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-          bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+      textTheme: const TextTheme(
+        // 가장 자주 사용되는 스타일만 정의
+        titleLarge: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Pretendard',
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Pretendard',
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Pretendard',
         ),
       ),
 
@@ -56,11 +65,12 @@ class AppTheme {
           statusBarColor: Colors.transparent,
         ),
         // 앱바 타이틀의 텍스트 스타일 설정
-        // Noto Sans KR 폰트 적용으로 한글 가독성 최적화
-        titleTextStyle: GoogleFonts.notoSansKr(
+        // Pretendard 폰트 적용으로 한글 가독성 최적화
+        titleTextStyle: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.black,
+          fontFamily: 'Pretendard',
         ),
       ),
     );
@@ -79,14 +89,24 @@ class AppTheme {
         surface: Colors.black,
         onSurface: Colors.white,
       ),
-      textTheme: GoogleFonts.notoSansKrTextTheme(
-        const TextTheme(
-          titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-          bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
-        ).apply(
-          bodyColor: Colors.white, // 다크 모드에서의 기본 텍스트 색상
-          displayColor: Colors.white,
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Pretendard',
+          color: Colors.white,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Pretendard',
+          color: Colors.white,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Pretendard',
+          color: Colors.white,
         ),
       ),
       appBarTheme: AppBarTheme(
@@ -96,10 +116,11 @@ class AppTheme {
         systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
           statusBarColor: Colors.transparent,
         ),
-        titleTextStyle: GoogleFonts.notoSansKr(
+        titleTextStyle: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.white,
+          fontFamily: 'Pretendard',
         ),
       ),
     );

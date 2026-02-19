@@ -68,10 +68,10 @@ class AdmobHandler {
     }
 
     if (Platform.isAndroid) {
-      return 'ca-app-pub-2379351859918727/6681533736';
+      return 'Android_전면_광고단위_아이디';
     }
     if (Platform.isIOS) {
-      return 'ca-app-pub-2379351859918727/4595067077';
+      return 'iOS_전면_광고단위_아이디';
     }
 
     return '';

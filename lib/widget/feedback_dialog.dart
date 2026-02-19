@@ -219,7 +219,6 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
     final l10n = AppLocalizations.of(context)!;
 
     return AlertDialog(
-      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       title: Text(_getTitle(l10n)),
       content: _buildContent(l10n),

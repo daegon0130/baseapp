@@ -23,7 +23,8 @@
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>GADApplicationIdentifier</key>
-	<string>"애드몹_앱_아이디를_넣어주세요"</string>
+	<!-- 애드몹_앱_아이디를_넣어주세요 -->
+	<string>ca-app-pub-2379351859918727~6381334882</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

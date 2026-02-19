@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:baseapp/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:baseapp/states/app_settings_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -14,15 +16,155 @@ class SettingsScreen extends StatelessWidget {
     return await PackageInfo.fromPlatform();
   }
 
+  String _getThemeModeText(ThemeMode mode, AppLocalizations l10n) {
+    switch (mode) {
+      case ThemeMode.light:
+        return l10n.themeModeLight;
+      case ThemeMode.dark:
+        return l10n.themeModeDark;
+      default:
+        return l10n.themeModeLight;
+    }
+  }
+
+  String _getLanguageText(Locale locale, AppLocalizations l10n) {
+    switch (locale.languageCode) {
+      case 'en':
+        return l10n.languageEnglish;
+      case 'es':
+        return l10n.languageSpanish;
+      case 'ko':
+        return l10n.languageKorean;
+      case 'ja':
+        return l10n.languageJapanese;
+      case 'zh':
+        return l10n.languageChinese;
+      default:
+        return l10n.languageEnglish;
+    }
+  }
+
+  void _showThemeModeDialog(
+    BuildContext context,
+    AppSettingsProvider settings,
+    AppLocalizations l10n,
+  ) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.themeMode),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        content: RadioGroup<ThemeMode>(
+          groupValue: settings.themeMode,
+          onChanged: (value) {
+            if (value != null) {
+              settings.setThemeMode(value);
+              Navigator.pop(context);
+            }
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              RadioListTile<ThemeMode>(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.themeModeLight),
+                value: ThemeMode.light,
+              ),
+              RadioListTile<ThemeMode>(
+                contentPadding: EdgeInsets.zero,
+                title: Text(l10n.themeModeDark),
+                value: ThemeMode.dark,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showLanguageDialog(
+    BuildContext context,
+    AppSettingsProvider settings,
+    AppLocalizations l10n,
+  ) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.language),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        content: SingleChildScrollView(
+          child: RadioGroup<String>(
+            groupValue: settings.locale.languageCode,
+            onChanged: (value) {
+              if (value != null) {
+                settings.setLocale(Locale(value));
+                Navigator.pop(context);
+              }
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<String>(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l10n.languageEnglish),
+                  value: 'en',
+                ),
+                RadioListTile<String>(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l10n.languageSpanish),
+                  value: 'es',
+                ),
+                RadioListTile<String>(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l10n.languageKorean),
+                  value: 'ko',
+                ),
+                RadioListTile<String>(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l10n.languageJapanese),
+                  value: 'ja',
+                ),
+                RadioListTile<String>(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l10n.languageChinese),
+                  value: 'zh',
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final settings = Provider.of<AppSettingsProvider>(context);
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settingsTitle)),
       body: ListView(
         children: [
           SizedBox(height: 16),
+          // 테마 모드 설정
+          ListTile(
+            leading: Icon(Icons.brightness_6_outlined),
+            title: Text(l10n.themeMode),
+            subtitle: Text(_getThemeModeText(settings.themeMode, l10n)),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () => _showThemeModeDialog(context, settings, l10n),
+          ),
+          Divider(height: 0),
+          // 언어 설정
+          ListTile(
+            leading: Icon(Icons.language_outlined),
+            title: Text(l10n.language),
+            subtitle: Text(_getLanguageText(settings.locale, l10n)),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () => _showLanguageDialog(context, settings, l10n),
+          ),
+          Divider(height: 0),
           ListTile(
             leading: Icon(Icons.info_outline),
             title: Text(l10n.appVersion),
@@ -44,7 +186,6 @@ class SettingsScreen extends StatelessWidget {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: Text(l10n.serviceIntro),
-                  backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -128,7 +269,6 @@ class SettingsScreen extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

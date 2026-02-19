@@ -99,4 +99,37 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get feedbackSuccessMessage =>
       'お寄せいただいたご意見のおかげでアプリがより良くなります。本当にありがとうございます！\n\nもしアプリが気に入っていただけたら、ストアにレビューを残してください！アプリ制作の大きな励みになります 😊';
+
+  @override
+  String get themeMode => 'テーマモード';
+
+  @override
+  String get themeModeLight => 'ライト';
+
+  @override
+  String get themeModeDark => 'ダーク';
+
+  @override
+  String get themeModeSystem => 'システムデフォルト';
+
+  @override
+  String get language => '言語';
+
+  @override
+  String get languageSystem => 'システムデフォルト';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageSpanish => 'Español';
+
+  @override
+  String get languageKorean => '한국어';
+
+  @override
+  String get languageJapanese => '日本語';
+
+  @override
+  String get languageChinese => '简体中文';
 }

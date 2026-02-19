@@ -98,4 +98,37 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get feedbackSuccessMessage =>
       '感谢您的反馈，这将帮助我们改进应用！\n\n如果您喜欢这个应用，请在商店留下评论！这对我们帮助很大 😊';
+
+  @override
+  String get themeMode => '主题模式';
+
+  @override
+  String get themeModeLight => '浅色';
+
+  @override
+  String get themeModeDark => '深色';
+
+  @override
+  String get themeModeSystem => '系统默认';
+
+  @override
+  String get language => '语言';
+
+  @override
+  String get languageSystem => '系统默认';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageSpanish => 'Español';
+
+  @override
+  String get languageKorean => '한국어';
+
+  @override
+  String get languageJapanese => '日本語';
+
+  @override
+  String get languageChinese => '简体中文';
 }

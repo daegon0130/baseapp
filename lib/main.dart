@@ -1,19 +1,18 @@
+import 'package:baseapp/admob.dart';
 import 'package:baseapp/router.dart';
 import 'package:baseapp/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
-import 'package:baseapp/admob.dart';
+import 'package:provider/provider.dart';
+import 'package:baseapp/states/app_settings_provider.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-  await dotenv.load(fileName: ".env");
-  // 스플래시 화면 유지
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // 화면 세로 고정
   await SystemChrome.setPreferredOrientations([
@@ -36,9 +35,28 @@ void main() async {
   // 광고 초기화
   final AdmobHandler admobHandler = AdmobHandler();
   await admobHandler.initialize();
-  //admobHandler.preloadInterstitialAd();
+  admobHandler.preloadInterstitialAd();
 
-  runApp(const MyApp());
+  try {
+    await dotenv.load(fileName: ".env");
+
+    await Supabase.initialize(
+      url: dotenv.env['SUPABASE_URL']!,
+      anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+    );
+  } catch (e) {
+    debugPrint('Supabase 초기화 실패: $e');
+  }
+
+  // 스플래시 화면 유지
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppSettingsProvider(),
+      child: const MyApp(),
+    ),
+  );
 
   // 스플래시 화면 제거
   FlutterNativeSplash.remove();
@@ -50,30 +68,32 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'BaseApp',
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      // ),
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      // 다국어 설정
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('es'), // Spanish
-        Locale('ko'), // Korean
-        Locale('ja'), // Japanese
-        Locale('zh'), // Chinese (Simplified)
-      ],
+    return Consumer<AppSettingsProvider>(
+      builder: (context, settings, child) {
+        return MaterialApp.router(
+          title: 'BaseApp',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: settings.themeMode,
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+          // 다국어 설정
+          locale: settings.locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en'), // English
+            Locale('es'), // Spanish
+            Locale('ko'), // Korean
+            Locale('ja'), // Japanese
+            Locale('zh'), // Chinese (Simplified)
+          ],
+        );
+      },
     );
   }
 }

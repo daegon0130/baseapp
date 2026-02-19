@@ -29,6 +29,17 @@
   "emailNote": "Ingrese su dirección de correo para recibir una respuesta. Su correo solo se usará para respuestas",
   "notProvided": "No proporcionado",
   "feedbackSuccessTitle": "¡Su consulta ha sido enviada con éxito!",
-  "feedbackSuccessMessage": "Sus comentarios ayudan a mejorar la aplicación. ¡Muchas gracias!\n\n¡Si le gusta la aplicación, deje una reseña en la tienda! Nos ayuda mucho 😊"
+  "feedbackSuccessMessage": "Sus comentarios ayudan a mejorar la aplicación. ¡Muchas gracias!\n\n¡Si le gusta la aplicación, deje una reseña en la tienda! Nos ayuda mucho 😊",
+  "themeMode": "Modo de Tema",
+  "themeModeLight": "Claro",
+  "themeModeDark": "Oscuro",
+  "themeModeSystem": "Predeterminado del Sistema",
+  "language": "Idioma",
+  "languageSystem": "Predeterminado del Sistema",
+  "languageEnglish": "English",
+  "languageSpanish": "Español",
+  "languageKorean": "한국어",
+  "languageJapanese": "日本語",
+  "languageChinese": "简体中文"
 }
 

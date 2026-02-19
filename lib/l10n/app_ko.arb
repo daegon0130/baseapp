@@ -29,6 +29,17 @@
   "emailNote": "답변을 받으시려면 이메일 주소를 입력해주세요. 이메일 주소는 답변 용도 외에 사용되지 않습니다",
   "notProvided": "제공하지 않음",
   "feedbackSuccessTitle": "문의가 성공적으로 전송되었습니다!",
-  "feedbackSuccessMessage": "보내주신 의견 덕분에 앱이 더 좋아질 거예요. 정말 감사합니다!\n\n혹시 앱이 마음에 드신다면, 스토어에 리뷰 한 줄도 남겨주세요! 앱 제작에 정말 큰 힘이 됩니다 😊"
+  "feedbackSuccessMessage": "보내주신 의견 덕분에 앱이 더 좋아질 거예요. 정말 감사합니다!\n\n혹시 앱이 마음에 드신다면, 스토어에 리뷰 한 줄도 남겨주세요! 앱 제작에 정말 큰 힘이 됩니다 😊",
+  "themeMode": "테마 모드",
+  "themeModeLight": "라이트",
+  "themeModeDark": "다크",
+  "themeModeSystem": "시스템 기본값",
+  "language": "언어",
+  "languageSystem": "시스템 기본값",
+  "languageEnglish": "English",
+  "languageSpanish": "Español",
+  "languageKorean": "한국어",
+  "languageJapanese": "日本語",
+  "languageChinese": "简体中文"
 }
 
