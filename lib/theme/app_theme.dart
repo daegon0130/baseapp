@@ -30,22 +30,21 @@ class AppTheme {
 
       // 2. TextTheme 설정
       // 앱 전체의 텍스트 스타일 정의
+      fontFamily: 'PretendardJP',
+      fontFamilyFallback: const ['TossFace'],
       textTheme: const TextTheme(
         // 가장 자주 사용되는 스타일만 정의
         titleLarge: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Pretendard',
         ),
         bodyLarge: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Pretendard',
         ),
         bodyMedium: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Pretendard',
         ),
       ),
 
@@ -65,12 +64,12 @@ class AppTheme {
           statusBarColor: Colors.transparent,
         ),
         // 앱바 타이틀의 텍스트 스타일 설정
-        // Pretendard 폰트 적용으로 한글 가독성 최적화
         titleTextStyle: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.black,
-          fontFamily: 'Pretendard',
+          fontFamily: 'PretendardJP',
+          fontFamilyFallback: const ['TossFace'],
         ),
       ),
     );
@@ -89,23 +88,22 @@ class AppTheme {
         surface: Colors.black,
         onSurface: Colors.white,
       ),
+      fontFamily: 'PretendardJP',
+      fontFamilyFallback: const ['TossFace'],
       textTheme: const TextTheme(
         titleLarge: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Pretendard',
           color: Colors.white,
         ),
         bodyLarge: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Pretendard',
           color: Colors.white,
         ),
         bodyMedium: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          fontFamily: 'Pretendard',
           color: Colors.white,
         ),
       ),
@@ -120,7 +118,8 @@ class AppTheme {
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.white,
-          fontFamily: 'Pretendard',
+          fontFamily: 'PretendardJP',
+          fontFamilyFallback: const ['TossFace'],
         ),
       ),
     );
